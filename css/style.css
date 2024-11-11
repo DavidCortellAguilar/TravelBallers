@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Ajuste de fondos */
+.fondo1, .fondo2, .fondo3 {
+    background-size: cover;
+    background-position: center;
+    flex: 1 1 25%;
+    min-height: 100vh; /* Mejor ajuste para cubrir el alto de la pantalla */
+}
+
+.fondo1 {
+    background-image: url('../img/Captura de pantalla 2024-10-23 171743.png');
+}
+
+.fondo2 {
+    background-image: url('../img/Captura de pantalla 2024-10-23 172009.png');
+}
+
+.fondo3 {
+    background-image: url('../img/Captura de pantalla 2024-10-23 172050.png');
+}
+
+.fondo4 {
+    background-image: url('../img/Captura de pantalla 2024-10-23 171908.png');
+    background-size: cover;
+    background-position: center;
+    flex: 1 1 25%;
+}
+
+/* Botón "ir arriba" */
+.ir-arriba {
+    padding: 20px;
+    color: black;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* Centrar contenido de la barra de navegación */
+.navbar-collapse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para enlaces del menú */
+.menu {
+    color: white;
+    padding: 10px; /* Ajuste en padding */
+    text-decoration: none;
+    font-style: italic;
+    position: relative;
+}
+
+.menu:hover{
+    color: white;
+}
+
+.menu:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    left: 0;
+    bottom: -5px;
+    color:white
+}
+
+.active1 {
+    color: red;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+/* Estilo del slider */
+.slider {
+    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider .slide-track {
+    display: flex;
+    animation: scroll 40s linear infinite; /* Ajusta el tiempo de la animación según el efecto deseado */
+    width: calc(200px * 14 * 2); /* Duplicamos el ancho para que contenga ambas copias de imágenes */
+}
+
+.slider .slide {
+    width: 200px; /* Ajuste para que cada slide tenga el mismo ancho */
+}
+
+.slider .slide img {
+    width: 100%;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 14)); /* El mismo tamaño que la mitad del contenedor */
+    }
+}
+
+
+/* Estilos básicos del contenedor del carrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.6s ease;
+    width: 100%;
+    max-width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    transition: opacity 0.6s ease;
+}
+
+.carousel-item img {
+    width: 80%;
+    height: auto;
+    max-width: 80%;
+    margin-left: 10%;
+    margin-bottom: 5rem;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-indicators li {
+    background-color: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+/* Media Queries para asegurar la responsividad en diferentes dispositivos */
+@media (max-width: 768px) {
+    .carousel-indicators li {
+        width: 8px;
+        height: 8px;
+    }
+
+    .carousel-control {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-control.left,
+    .carousel-control.right {
+        width: 10%;
+    }
+
+    .carousel-indicators {
+        gap: 5px;
+    }
+    
+    .carousel-control {
+        font-size: 16px;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Logo del footer */
+.footer-logo-image {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+/* Navegación en el footer */
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: red;
+}
+
+/* Redes sociales */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: red;
+}
+
+/* Pie de página inferior */
+.footer-bottom {
+    border-top: 2px solid #444;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-nav ul {
+        flex-direction: column;
+    }
+}
