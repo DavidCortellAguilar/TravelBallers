@@ -45,18 +45,18 @@ if($conn->connect_error){
     <link rel="stylesheet" href="./css/login.css">
     
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-image: url(./img/fondo.png);
+            background-size: cover;
+            background-position: center;
+            flex: 1 1 25%;
+            min-height: 100%; /* Mejor ajuste para cubrir el alto de la pantalla */
+        }
         .contenedor {
             max-width: 40rem;
-            margin: 2rem auto;
-            background-color: black;
-        }
-        .tabla {
-            max-width: 40rem;
-            margin: 2rem auto;
-            background-color: black;
-        }
-        td, th, tbody{
-            background-color: black;
+            margin: 3rem auto;
         }
         .sombra {
             box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
@@ -91,34 +91,33 @@ if($conn->connect_error){
 </head>
 
 <body>
-    <?php echo $nav ?>
-    <div class="contenedor sombra p-4 rounded bg-light">
-        <h1 class="text-center">
-            <img src="./img/logo.png" alt="Descripción de la imagen" width="300" height="200">
-        </h1>
-        <h1>INICIAR SESIÓN</h1><br>
-            <div class="card-body">
-                <form action="enviarDatos.php" method="post">
-                    <div class="mb-3">
-                        <label for="producto" class="form-label"><b>Email</b></label>
-                        <input type="Email" id="Email" class="form-control input" placeholder="Introduce el email"
-                            name="Email"/>
-                    </div>
+        <?php echo $nav ?>
+        <div class="contenedor sombra p-4 rounded bg-light">
+            <h1 class="text-center">
+                <img src="./img/logo.png" alt="Descripción de la imagen" width="300" height="200">
+            </h1>
+            <h1>INICIAR SESIÓN</h1><br>
+                <div class="card-body">
+                    <form action="enviarDatos.php" method="post">
+                        <div class="mb-3">
+                            <label for="producto" class="form-label"><b>Email</b></label>
+                            <input type="Email" id="Email" class="form-control input" placeholder="Introduce el email"
+                                name="Email"/>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="producto" class="form-label"><b>Contraseña</b></label>
-                        <input type="password" id="pass" class="form-control input" placeholder="Introduce la contraseña"
-                            name="pass"/>
-                    </div><br>
+                        <div class="mb-3">
+                            <label for="producto" class="form-label"><b>Contraseña</b></label>
+                            <input type="password" id="pass" class="form-control input" placeholder="Introduce la contraseña"
+                                name="pass"/>
+                        </div><br>
 
-                    <div class="d-grid" style="margin: bottom 0px;">
-                        <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
-                    </div>
-                </form>
-            </div>
-    </div>
-    <?php echo $footer ?>
-
+                        <div class="d-grid" style="margin: bottom 0px;">
+                            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <?php echo $footer ?>
 </body>
 </html>
 

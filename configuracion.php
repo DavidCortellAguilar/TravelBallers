@@ -21,7 +21,7 @@ $stroke_color = ($current_page == "login.php") ? "red" : "currentColor";
 
 // Navbar con clase 'active' dinámica
 $nav = '
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" id="Home" aria-label="Eleventh navbar example">
+<nav class="navbar navbar-expand-lg" id="Home" aria-label="Eleventh navbar example">
     <div class="container-fluid">
         <a class="navbar-brand" href="landing.php">
             <img style="width: 150px; height: 150px;" src="./img/logo.png" alt="Logo">
@@ -60,7 +60,7 @@ $nav = '
 </nav>
 ';
 
-// Footer HTML (sin modificaciones en este caso)
+// Footer HTML
 $footer = '
 <footer class="footer">
     <div class="footer-container">
