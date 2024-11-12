@@ -16,6 +16,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if($conn->connect_error){
     die("Conexión fallida: ".$conn->connect_error);
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnCerrarSesion'])) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
