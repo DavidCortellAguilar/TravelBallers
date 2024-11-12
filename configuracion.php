@@ -16,9 +16,12 @@ if ($conn->connect_error) {
 // Determina la página actual
 $current_page = basename($_SERVER['PHP_SELF']);
 
+// Determina el color del trazo (stroke) según la página actual
+$stroke_color = ($current_page == "login.php") ? "red" : "currentColor";
+
 // Navbar con clase 'active' dinámica
 $nav = '
-<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" id="Home" aria-label="Eleventh navbar example">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" id="Home" aria-label="Eleventh navbar example">
     <div class="container-fluid">
         <a class="navbar-brand" href="landing.php">
             <img style="width: 150px; height: 150px;" src="./img/logo.png" alt="Logo">
@@ -45,8 +48,8 @@ $nav = '
                 </li>
             </ul>
             <div class="group">
-                <a style="color:white;" class="menu" href="login.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
+                <a class="menu" href="login.php">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="' . $stroke_color . '" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> 
                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> 
                     </svg>

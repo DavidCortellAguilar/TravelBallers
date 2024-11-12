@@ -92,7 +92,7 @@ html, body {
 
 /* Estilo del slider */
 .slider {
-    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
     height: auto;
     margin: auto;
     overflow: hidden;
