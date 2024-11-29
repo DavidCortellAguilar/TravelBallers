@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $current_page = basename($_SERVER['PHP_SELF']);
 
 // Determina el color del trazo (stroke) según la página actual
-$stroke_color = ($current_page == "login.php") ? "red" : "currentColor";
+$stroke_color = ($current_page == "login.php" || $current_page == "registrar.php") ? "red" : "currentColor";
 
 
 // Navbar con clase 'active' dinámica
@@ -54,14 +54,22 @@ $nav = '
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> 
                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> 
                     </svg>
-                </a>
-                <a class="menu" href="CerrarSesion.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-                        <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path> <path d="M21 12h-13l3 -3"></path>
-                        <path d="M11 15l-3 -3"></path>
-                    </svg> 
-                </a>
-            </div>
+                </a>';
+
+                if ($current_page !== "login.php" && $current_page !== "registrar.php") {
+                    $nav .= '
+                        <a class="menu" href="CerrarSesion.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                                <path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                <path d="M21 12h-13l3 -3"></path>
+                                <path d="M11 15l-3 -3"></path>
+                            </svg> 
+                        </a>
+                    ';
+                }
+                
+
+            $nav .= '</div>
         </div>
     </div>
 </nav>

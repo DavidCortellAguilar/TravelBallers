@@ -2,12 +2,10 @@
 include_once('configuracion.php');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $Email = $_POST['email'];
-    $Password = $_POST['pass'];
+    $Email = $_POST['Email'];
+    $Pass = $_POST['Pass'];
 
-    $Pass = md5($Password);
-
-    $sql = "SELECT Nombre_Usuario, ID_Rol FROM usuarios WHERE Email='$Email' AND Password='$Pass'";
+    $sql = "SELECT Nombre_Usuario, ID_Rol FROM usuarios WHERE Email='$Email' AND Contraseña='$Pass'";
     $result = $conn->query($sql);
 
     if($result->num_rows > 0){
@@ -15,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $row = $result->fetch_assoc();
         $_SESSION["Nombre_Usuario"] = $row["Nombre_Usuario"];
         $_SESSION["ID_Rol"] = $row["ID_Rol"];
-        header("Location: almacen.php");
+        header("Location: landing.php");
     }
 }
 ?>

@@ -96,28 +96,34 @@ if($conn->connect_error){
             <h1 class="text-center">
                 <img src="./img/logo.png" alt="Descripción de la imagen" width="300" height="200">
             </h1>
-            <h1>INICIAR SESIÓN</h1><br>
+            <h1>REGISTRARME</h1><br>
                 <div class="card-body">
-                    <form action="enviarLogin.php" method="post">
+                    <form action="enviarRegistro.php" method="post">
                         <div class="mb-3">
-                            <label for="producto" class="form-label"><b>Email</b></label>
-                            <input type="Email" id="Email" class="form-control input" placeholder="Introduce el email"
+                            <label class="form-label"><b>Nombre</b></label>
+                            <input type="text" name="Nombre" id="Nombre" class="form-control input" placeholder="Introduce tu nombre"
+                                name="Email"/>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label"><b>Email</b></label>
+                            <input type="Email" name="Email" id="Email" class="form-control input" placeholder="Introduce el email"
                                 name="Email"/>
                         </div>
 
                         <div class="mb-3">
-                            <label for="producto" class="form-label"><b>Contraseña</b></label>
-                            <input type="password" id="Pass" class="form-control input" placeholder="Introduce la contraseña"
+                            <label class="form-label"><b>Contraseña</b></label>
+                            <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña"
                                 name="pass"/>
                         </div>
 
                         <div class="d-grid" style="margin: bottom 0px;">
-                            <button type="submit" class="btn btn-primary w-25">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-primary w-25">Registrarme</button>
                         </div>
                     </form>
                     <hr style="border:1px solid black; margin: 30px">
-                    <h3>¿No tienes cuenta?</h3>
-                    <button type="button" class="btn btn-success w-25"><a style="text-decoration:none; color:white" href="registrar.php">Registrarme</a></button>
+                    <h3>¿Ya tienes cuenta?</h3>
+                    <button type="button" class="btn btn-success w-25"><a style="text-decoration:none; color:white" href="login.php">Iniciar Sesion</a></button>
                 </div>
         </div>
         <?php echo $footer ?>
