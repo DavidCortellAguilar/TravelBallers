@@ -46,6 +46,9 @@ $nav = '
                 <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "contacta.php" ? "active1" : "") . ' menu" href="contacta.php"><b>Contacta</b></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link ' . ($current_page == "Equipos.php" ? "active1" : "") . ' menu" href="Equipos.php"><b>Equipos</b></a>
+                </li>
             </ul>
             <div class="group">';
                 if (isset($_SESSION['Nombre_Usuario'])) {
