@@ -87,6 +87,7 @@ if ($result->num_rows > 0) {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
+        color:black;
     }
 
     table td, th {
@@ -103,7 +104,7 @@ if ($result->num_rows > 0) {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: #04AA6D;
+        background-color: skyblue;
         color: white;
     }
     </style>
@@ -113,10 +114,7 @@ if ($result->num_rows > 0) {
         <?php echo $nav ?>
         <div class="container py-5">
             <div class="card shadow-sm">
-                <div class="card-body">
-                    <h1 class="text-center mb-4">EQUIPOS</h1>
-                    <?php echo $tabla ?>
-                </div>
+            <?php echo $tabla ?>
             </div>
         </div>
         <?php echo $footer ?>
