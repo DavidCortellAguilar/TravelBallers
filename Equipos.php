@@ -15,6 +15,48 @@ if($conn->connect_error){
     die("Conexión fallida: ".$conn->connect_error);
 }
 
+    $sql = "SELECT e.ID_Equipo, e.Nombre_Equipo AS Nombre, e.Logo_Equipo AS Logo, e.Ciudad_Equipo AS Ciudad, (SELECT COUNT(*) FROM jugadores j WHERE j.ID_Equipo = e.ID_Equipo) AS Cantidad_Jugadores FROM equipos e";
+    $result = $conn->query($sql);
+
+    $tabla = "";
+if ($result->num_rows > 0) {
+    $tabla .= "<table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Logo Equipo</th>
+                    <th>Nombre Equipo</th>
+                    <th>Ciudad</th>
+                    <th>Cantidad Jugadores</th>
+                    <th>Ver Plantilla</th>
+                </tr>
+                </thead>
+                <tbody>";
+    
+    // Generar las filas dentro del bucle
+    while ($row = $result->fetch_assoc()) {
+        $tabla .= "<tr class='fila-principal' data-id='" . $row['ID_Equipo'] . "'>
+                    <td>" . $row['ID_Equipo'] . "</td>
+                    <td><img src='./" . $row["Logo"] . "' alt='Imagen de " . $row["Logo"] . "' class='img-fluid'></td>
+                    <td>" . $row['Nombre'] . "</td>
+                    <td>" . $row['Ciudad'] . "</td>
+                    <td>" . $row['Cantidad_Jugadores'] . " Jugadores</td>
+                    <td><a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "'>
+                        <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                            <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                            <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
+                            <path d='M12 9h.01'/>
+                            <path d='M11 12h1v4h1'/>
+                        </svg>
+                    </a></td>
+                </tr>";
+    }
+
+    // Cierre del cuerpo de la tabla y la tabla
+    $tabla .= "</tbody></table>";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +82,31 @@ if($conn->connect_error){
     <!-- CSS personalizado -->
     <script src="scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table td, th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        width: 20%;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
+
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+    </style>
 </head>
 <body>
     <div class="fondo1">
@@ -48,8 +115,7 @@ if($conn->connect_error){
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h1 class="text-center mb-4">EQUIPOS</h1>
-                    <div class="d-flex justify-content-center gap-2 mb-4">
-                    </div>
+                    <?php echo $tabla ?>
                 </div>
             </div>
         </div>
