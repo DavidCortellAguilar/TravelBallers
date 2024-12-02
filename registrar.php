@@ -101,20 +101,17 @@ if($conn->connect_error){
                     <form action="enviarRegistro.php" method="post">
                         <div class="mb-3">
                             <label class="form-label"><b>Nombre</b></label>
-                            <input type="text" name="Nombre" id="Nombre" class="form-control input" placeholder="Introduce tu nombre"
-                                name="Email"/>
+                            <input type="text" name="Nombre" id="Nombre" class="form-control input" placeholder="Introduce tu nombre"/>
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label"><b>Email</b></label>
-                            <input type="Email" name="Email" id="Email" class="form-control input" placeholder="Introduce el email"
-                                name="Email"/>
+                            <input type="Email" name="Email" id="Email" class="form-control input" placeholder="Introduce el email" name="Email"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label"><b>Contraseña</b></label>
-                            <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña"
-                                name="pass"/>
+                            <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña" name="Pass"/>
                         </div>
 
                         <div class="d-grid" style="margin: bottom 0px;">
