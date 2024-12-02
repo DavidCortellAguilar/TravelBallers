@@ -101,14 +101,12 @@ if($conn->connect_error){
                     <form action="enviarLogin.php" method="post">
                         <div class="mb-3">
                             <label for="producto" class="form-label"><b>Email</b></label>
-                            <input type="Email" id="Email" class="form-control input" placeholder="Introduce el email"
-                                name="Email"/>
+                            <input type="Email" id="Email" class="form-control input" placeholder="Introduce el email" name="Email"/>
                         </div>
 
                         <div class="mb-3">
                             <label for="producto" class="form-label"><b>Contraseña</b></label>
-                            <input type="password" id="Pass" class="form-control input" placeholder="Introduce la contraseña"
-                                name="pass"/>
+                            <input type="password" id="Pass" class="form-control input" placeholder="Introduce la contraseña" name="Pass"/>
                         </div>
 
                         <div class="d-grid" style="margin: bottom 0px;">
