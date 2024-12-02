@@ -5,6 +5,9 @@ $username = "root";
 $password = "";
 $dbname = "ballers";
 
+// Inicia la sesión
+session_start();
+
 // Establecer conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -13,14 +16,10 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Determina la página actual
 $current_page = basename($_SERVER['PHP_SELF']);
 
-// Determina el color del trazo (stroke) según la página actual
 $stroke_color = ($current_page == "login.php" || $current_page == "registrar.php") ? "red" : "currentColor";
 
-
-// Navbar con clase 'active' dinámica
 $nav = '
 <nav class="navbar navbar-expand-lg" id="Home" aria-label="Eleventh navbar example">
     <div class="container-fluid">
@@ -48,15 +47,24 @@ $nav = '
                     <a class="nav-link ' . ($current_page == "contacta.php" ? "active1" : "") . ' menu" href="contacta.php"><b>Contacta</b></a>
                 </li>
             </ul>
-            <div class="group">
-                <a class="menu" href="perfil.php">
+            <div class="group">';
+                if (isset($_SESSION['Nombre_Usuario'])) {
+                    $nav .= ' <a class="menu" href="perfil.php">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="' . $stroke_color . '" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> 
                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> 
                     </svg>
                 </a>';
+                } else {
+                    $nav .= ' <a class="menu" href="login.php">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="' . $stroke_color . '" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
+                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> 
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> 
+                    </svg>
+                </a>';
+                }
 
-                if ($current_page !== "login.php" && $current_page !== "registrar.php") {
+                if ($current_page !== "login.php" && $current_page !== "registrar.php" && isset($_SESSION['Nombre_Usuario'])) {
                     $nav .= '
                         <a class="menu" href="CerrarSesion.php">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
@@ -67,8 +75,6 @@ $nav = '
                         </a>
                     ';
                 }
-                
-
             $nav .= '</div>
         </div>
     </div>
