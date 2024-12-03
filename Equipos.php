@@ -23,7 +23,6 @@ if ($result->num_rows > 0) {
     $tabla .= "<table>
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Logo Equipo</th>
                     <th>Nombre Equipo</th>
                     <th>Ciudad</th>
@@ -36,7 +35,6 @@ if ($result->num_rows > 0) {
     // Generar las filas dentro del bucle
     while ($row = $result->fetch_assoc()) {
         $tabla .= "<tr class='fila-principal' data-id='" . $row['ID_Equipo'] . "'>
-                    <td>" . $row['ID_Equipo'] . "</td>
                     <td><img src='./" . $row["Logo"] . "' alt='Imagen de " . $row["Logo"] . "' class='img-fluid'></td>
                     <td>" . $row['Nombre'] . "</td>
                     <td>" . $row['Ciudad'] . "</td>
@@ -110,6 +108,7 @@ if ($result->num_rows > 0) {
     </style>
 </head>
 <body>
+    <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
     <div class="fondo1">
         <?php echo $nav ?>
         <div class="container py-5">
