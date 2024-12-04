@@ -61,6 +61,20 @@ if(isset($_GET['ID_Equipo'])){
     $tabla .= "</tbody></table>";
 }
 }
+$equipoBanners = [
+    "1" => "./logos_equipos/KentukyBanner.png",
+    "2" => "./logos_equipos/northCarolinaBanner.png",
+    "3" => "./logos_equipos/utahStateBanner.png",
+    "4" => "./logos_equipos/floridaBanner.png",
+    "5" => "./logos_equipos/uclaBanner.png",
+    "6" => "./logos_equipos/arizonaBanner.png",
+    "7" => "./logos_equipos/dukeBanner.png",
+];
+
+$imgBanner = isset($equipoBanners[$ID_Equipo]) 
+    ? "<img style='width:70%; margin-left:15%' src='" . $equipoBanners[$ID_Equipo] . "'>" 
+    : ""; // Por defecto, vacío si no se encuentra el ID
+
 ?>
 
 <!DOCTYPE html>
@@ -117,6 +131,7 @@ if(isset($_GET['ID_Equipo'])){
 <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
 <div class="fondo1">
         <?php echo $nav ?>
+        <?php echo $imgBanner ?>
         <div class="container py-5">
             <div class="card shadow-sm">
             <?php echo $tabla ?>
