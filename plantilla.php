@@ -87,6 +87,12 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <style>
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+
         table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse:collapse;
@@ -119,10 +125,15 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
 <div class="fondo1">
         <?php echo $nav ?>
         <?php echo $imgBanner ?>
-        <div class="container py-5">
-            <div class="card shadow-sm">
+        <div class="container py-5 container-fluid">
+            <div class="card shadow-sm table-responsive">
             <?php echo $tabla ?>
             </div>
+            <br>
+            <div class="d-grid mt-3" style="text-align: center;">
+                <button type="button" class="btn btn-danger"><a style="color:white; text-decoration:none" href="Equipos.php">Salir</a></button>
+            </div>
+
         </div>
         <?php echo $footer ?>
     </div>
