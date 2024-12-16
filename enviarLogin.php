@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $row = $result->fetch_assoc();
         $_SESSION["Nombre_Usuario"] = $row["Nombre_Usuario"];
         $_SESSION["ID_Rol"] = $row["ID_Rol"];
-        header("Location: landing.php");
+        header("Location: index.php");
     }
 }
 ?>

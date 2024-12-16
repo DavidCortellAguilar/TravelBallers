@@ -23,7 +23,7 @@ $stroke_color = ($current_page == "login.php" || $current_page == "registrar.php
 $nav = '
 <nav class="navbar navbar-expand-lg" id="Home" aria-label="Eleventh navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand" href="landing.php">
+        <a class="navbar-brand" href="index.php">
             <img style="width: 150px; height: 150px;" src="./img/logo.png" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@ $nav = '
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul style="gap:15px" class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link ' . ($current_page == "landing.php" ? "active1" : "") . ' menu" href="landing.php"><b>Home</b></a>
+                    <a class="nav-link ' . ($current_page == "index.php" ? "active1" : "") . ' menu" href="index.php"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "buscar_college.php" ? "active1" : "") . ' menu" href="buscar_college.php"><b>Buscar College</b></a>
