@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- CSS personalizado -->
-    <script src="scroll.js"></script>
+    <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <style>
         table {
