@@ -1,19 +1,6 @@
 <?php
 include_once('configuracion.php');
-
-//Datos conexión base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ballers";
-
-//Establecer conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-//Verificar conexión
-if($conn->connect_error){
-    die("Conexión fallida: ".$conn->connect_error);
-}
+include_once('config.php');
 
     $sql = "SELECT e.ID_Equipo, e.Nombre_Equipo AS Nombre, e.Logo_Equipo AS Logo, e.Ciudad_Equipo AS Ciudad, (SELECT COUNT(*) FROM jugadores j WHERE j.ID_Equipo = e.ID_Equipo) AS Cantidad_Jugadores FROM equipos e";
     $result = $conn->query($sql);

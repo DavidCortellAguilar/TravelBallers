@@ -2,20 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include_once('configuracion.php');
-
-// Datos de conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ballers";
-
-// Establecer conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if($conn->connect_error){
-    die("Conexión fallida: ".$conn->connect_error);
-}
+include_once('config.php');
 
 // Verificar si se ha pasado un ID en la URL
 if(isset($_GET['ID_Equipo'])){

@@ -1,20 +1,5 @@
 <?php
-// Datos de conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ballers";
-
-// Inicia la sesión
-session_start();
-
-// Establecer conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include_once('config.php');
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
