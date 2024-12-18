@@ -70,7 +70,7 @@ include_once('config.php');
     <div class="container col-xxl-8 px-4 py-5">
         <div style="margin-top: 7%;" class="row">
             <div style="margin-bottom: 15px;">
-                <img style="text-align: center; width:120%" src="./img/quienes.png" alt="Quienes somos">
+                <img style="text-align: center; width:100%" src="./img/quienes.png" alt="Quienes somos">
             </div>
             <p style="text-align: justify; color: white;" class="lead">
                 Travel Ballers es una empresa comprometida con inspirar a los jóvenes a perseguir sus sueños y alcanzar su máximo potencial, tanto dentro como fuera de la cancha. Nos dedicamos a apoyar a jugadores de baloncesto españoles con talento, brindándoles la oportunidad de continuar su carrera deportiva mientras avanzan en sus estudios en instituciones educativas de alto nivel en Estados Unidos, como High Schools y Universidades. Creemos firmemente que combinar una sólida educación con la pasión por el baloncesto es fundamental para formar personas integrales y abrirles las puertas a un futuro brillante.

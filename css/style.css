@@ -13,7 +13,7 @@ html, body {
     background-size: cover;
     background-position: center;
     flex: 1 1 25%;
-    min-height: 100vh; /* Mejor ajuste para cubrir el alto de la pantalla */
+    min-height: 100vh;
 }
 
 .fondo1 {
