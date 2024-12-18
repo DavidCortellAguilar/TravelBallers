@@ -128,7 +128,6 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
             <div class="d-grid mt-3" style="text-align: center;">
                 <button type="button" class="btn btn-danger"><a style="color:white; text-decoration:none" href="Equipos.php">Salir</a></button>
             </div>
-
         </div>
         <?php echo $footer ?>
     </div>
