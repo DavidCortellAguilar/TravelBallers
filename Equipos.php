@@ -98,7 +98,7 @@ if ($result->num_rows > 0) {
     <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
     <div class="fondo1">
         <?php echo $nav ?>
-        <div class="container py-5">
+        <div class="container py-5 table-responsive">
             <div class="card shadow-sm">
             <?php echo $tabla ?>
             </div>

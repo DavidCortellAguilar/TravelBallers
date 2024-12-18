@@ -88,11 +88,6 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
     <link rel="stylesheet" href="./css/style.css">
     <style>
 
-    .table-responsive {
-        width: 100%;
-        overflow-x: auto;
-    }
-
         table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse:collapse;
