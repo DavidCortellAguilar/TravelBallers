@@ -20,9 +20,6 @@ $nav = '
                     <a class="nav-link ' . ($current_page == "index.php" ? "active1" : "") . ' menu" href="index.php"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ' . ($current_page == "buscar_college.php" ? "active1" : "") . ' menu" href="buscar_college.php"><b>Buscar College</b></a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "buscar_universidad.php" ? "active1" : "") . ' menu" href="buscar_universidad.php"><b>Buscar Universidad</b></a>
                 </li>
                 <li class="nav-item">

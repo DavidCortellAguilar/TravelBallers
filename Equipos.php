@@ -2,47 +2,42 @@
 include_once('configuracion.php');
 include_once('config.php');
 
-    $sql = "SELECT e.ID_Equipo, e.Nombre_Equipo AS Nombre, e.Logo_Equipo AS Logo, e.Ciudad_Equipo AS Ciudad, (SELECT COUNT(*) FROM jugadores j WHERE j.ID_Equipo = e.ID_Equipo) AS Cantidad_Jugadores FROM equipos e";
-    $result = $conn->query($sql);
+$sql = "SELECT e.ID_Equipo, e.Nombre_Equipo AS Nombre, e.Logo_Equipo AS Logo, e.Ciudad_Equipo AS Ciudad, 
+        (SELECT COUNT(*) FROM jugadores j WHERE j.ID_Equipo = e.ID_Equipo) AS Cantidad_Jugadores 
+        FROM equipos e";
+$result = $conn->query($sql);
 
-    $tabla = "";
-if ($result->num_rows > 0) {
-    $tabla .= "<table>
-                <thead>
-                <tr>
-                    <th>Logo Equipo</th>
-                    <th>Nombre Equipo</th>
-                    <th>Ciudad</th>
-                    <th>Cantidad Jugadores</th>
-                    <th>Ver Plantilla</th>
-                </tr>
-                </thead>
-                <tbody>";
-    
+$tabla = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
+if ($result->num_rows > 0) {    
     // Generar las filas dentro del bucle
     while ($row = $result->fetch_assoc()) {
-        $tabla .= "<tr class='fila-principal' data-id='" . $row['ID_Equipo'] . "'>
-                    <td><img src='./" . $row["Logo"] . "' alt='Imagen de " . $row["Logo"] . "' class='img-fluid'></td>
-                    <td>" . $row['Nombre'] . "</td>
-                    <td>" . $row['Ciudad'] . "</td>
-                    <td>" . $row['Cantidad_Jugadores'] . " Jugadores</td>
-                    <td><a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "'>
-                        <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
-                            <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
-                            <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
-                            <path d='M12 9h.01'/>
-                            <path d='M11 12h1v4h1'/>
-                        </svg>
-                    </a></td>
-                </tr>";
+        $tabla .= "
+            <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
+                <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
+                    <img src='./" . $row["Logo"] . "' alt='Imagen de " . $row["Nombre"] . "' class='img-fluid' style='max-height: 200px; object-fit: contain;'>
+                    <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
+                        <h5 class='card-title'>" . $row['Nombre'] . "</h5>
+                        <p class='card-text'>Nº Jugadores: <span class='price'>" . $row['Cantidad_Jugadores'] . "</span></p>
+                        <p class='card-text'>📍Ciudad: " . $row['Ciudad'] . "</p>
+                        <a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "' class='d-flex justify-content-center align-items-center mt-3'>
+                            <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
+                                <path d='M12 9h.01'/>
+                                <path d='M11 12h1v4h1'/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        ";
     }
-
-    // Cierre del cuerpo de la tabla y la tabla
-    $tabla .= "</tbody></table>";
 }
-
+$tabla .= "</div></div>"; // Cerrar el contenedor y la fila
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,42 +62,12 @@ if ($result->num_rows > 0) {
     <!-- CSS personalizado -->
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <style>
-        table {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        color:black;
-    }
-
-    table td, th {
-        border: 1px solid #ddd;
-        padding: 8px;
-        width: 20%;
-    }
-
-    table tr:hover {
-        background-color: #ddd;
-    }
-
-    table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: skyblue;
-        color: white;
-    }
-    </style>
 </head>
 <body>
     <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
     <div class="fondo1">
         <?php echo $nav ?>
-        <div class="container py-5 container-fluid">
-            <div class="card shadow-sm table-responsive">
-            <?php echo $tabla ?>
-            </div>
-        </div>
+        <?php echo $tabla ?>
         <?php echo $footer ?>
     </div>
 </body>
