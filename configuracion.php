@@ -23,13 +23,13 @@ $nav = '
                     <a class="nav-link ' . ($current_page == "buscar_universidad.php" ? "active1" : "") . ' menu" href="buscar_universidad.php"><b>Buscar Universidad</b></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link ' . ($current_page == "Equipos.php" ? "active1" : "") . ' menu" href="Equipos.php"><b>Equipos</b></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "equipamiento.php" ? "active1" : "") . ' menu" href="equipamiento.php"><b>Equipamiento Deportivo</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "contacta.php" ? "active1" : "") . ' menu" href="contacta.php"><b>Contacta</b></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ' . ($current_page == "Equipos.php" ? "active1" : "") . ' menu" href="Equipos.php"><b>Equipos</b></a>
                 </li>
             </ul>
             <div class="group">';
