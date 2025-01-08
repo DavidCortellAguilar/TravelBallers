@@ -11,42 +11,30 @@ if(isset($_GET['ID_Equipo'])){
     $sql = "SELECT * FROM jugadores j JOIN equipos e ON j.ID_Equipo = e.ID_Equipo WHERE j.ID_Equipo = '$ID_Equipo'";
     $result = $conn->query($sql);
 
-    $tabla = "";
-    if ($result->num_rows > 0) {
-        $tabla .= "<table>
-                    <thead>
-                    <tr>
-                        <th>Foto Jugador</th>
-                        <th>Nombre Jugador</th>
-                        <th>Equipo</th>
-                        <th>Posición</th>
-                        <th>Dorsal</th>
-                        <th>Edad</th>
-                        <th>Nacionalidad</th>
-                        <th>Altura</th>
-                        <th>Peso</th>
-                    </tr>
-                    </thead>
-                    <tbody>";
-        
-    // Generar las filas dentro del bucle
-    while ($row = $result->fetch_assoc()) {
-        $tabla .= "<tr>
-                    <td style='padding:0px;'><img src='./" . $row["Foto_Jugador"] . "' alt='Imagen de " . $row["Foto_Jugador"] . "' class='img-fluid'></td>
-                    <td>" . $row['Nombre_Jugador'] . "</td>
-                    <td>" . $row['Nombre_Equipo'] . "</td>
-                    <td>" . $row['Posicion_Jugador'] . "</td>
-                    <td>Nº " . $row['Dorsal'] . "</td>
-                    <td>" . $row['Edad'] . " años</td>
-                    <td>" . $row['Nacionalidad'] . "</td>
-                    <td>" . $row['Altura'] . " cm</td>
-                    <td>" . $row['Peso'] . " kg</td>
-                </tr>";
+    $tabla = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
+    if ($result->num_rows > 0) {    
+        // Generar las filas dentro del bucle
+        while ($row = $result->fetch_assoc()) {
+            $tabla .= "
+                <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
+                    <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
+                        <img src='./" . $row["Foto_Jugador"] . "' alt='Imagen de " . $row["Foto_Jugador"] . "' class='img-fluid' style='max-height: 200px; object-fit: contain;'>
+                        <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
+                            <h5 class='card-title'>" . $row['Nombre_Jugador'] . "</h5>
+                            <p class='card-text'>Nombre Equipo: <span class='price'>" . $row['Nombre_Equipo'] . "</span></p>
+                            <p class='card-text'>Posición: " . $row['Posicion_Jugador'] . "</p>
+                            <p class='card-text'>Dorsal: " . $row['Dorsal'] . "</p>
+                            <p class='card-text'>Edad: " . $row['Edad'] . " años</p>
+                            <p class='card-text'>Nacionalidad: " . $row['Nacionalidad'] . "</p>
+                            <p class='card-text'>Altura: " . $row['Altura'] . " cm</p>
+                            <p class='card-text'>Peso: " . $row['Peso'] . " kg</p>
+                        </div>
+                    </div>
+                </div>
+            ";
+        }
     }
-
-    // Cierre del cuerpo de la tabla y la tabla
-    $tabla .= "</tbody></table>";
-}
+    $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
 }
 $equipoBanners = [
     "1" => "./logos_equipos/KentukyBanner.png",
@@ -121,9 +109,7 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
         <?php echo $nav ?>
         <?php echo $imgBanner ?>
         <div class="container py-5 container-fluid">
-            <div class="card shadow-sm table-responsive">
             <?php echo $tabla ?>
-            </div>
             <br>
             <div class="d-grid mt-3" style="text-align: center;">
                 <button type="button" class="btn btn-danger"><a style="color:white; text-decoration:none" href="Equipos.php">Salir</a></button>

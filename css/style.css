@@ -307,6 +307,6 @@ html, body {
 
 @media (max-width: 576px) {
     .card {
-        width: 90%; /* Ajustar ancho en pantallas pequeñas */
+        width: 80%; /* Ajustar ancho en pantallas pequeñas */
     }
 }

@@ -18,15 +18,18 @@ if ($result->num_rows > 0) {
                     <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
                         <h5 class='card-title'>" . $row['Nombre'] . "</h5>
                         <p class='card-text'>Nº Jugadores: <span class='price'>" . $row['Cantidad_Jugadores'] . "</span></p>
-                        <p class='card-text'>📍Ciudad: " . $row['Ciudad'] . "</p>
-                        <a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "' class='d-flex justify-content-center align-items-center mt-3'>
-                            <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
-                                <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
-                                <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
-                                <path d='M12 9h.01'/>
-                                <path d='M11 12h1v4h1'/>
-                            </svg>
-                        </a>
+                        <p style='margin-bottom: 0px;' class='card-text'>📍Ciudad: " . $row['Ciudad'] . "</p>
+                        <div style='margin-top: 0px;' class='d-flex justify-content-between align-items-center mt-3'>
+                            <a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "' class='equipo d-flex justify-content-center align-items-center mt-3'>
+                                <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
+                                    <path d='M12 9h.01'/>
+                                    <path d='M11 12h1v4h1'/>
+                                </svg>
+                            </a>
+                            <img class='corazon' src='./img/Corazon-vacio.svg' data-alt-src='./img/Corazon-lleno.svg' alt=''>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,6 +65,16 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
     <!-- CSS personalizado -->
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .corazon {
+            margin-right: 20%;
+            margin-top: 15px;
+        }
+
+        .equipo{
+            margin-left: 20%;
+        }
+    </style>
 </head>
 <body>
     <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
@@ -71,4 +84,14 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
         <?php echo $footer ?>
     </div>
 </body>
+<script>
+    document.querySelectorAll('.corazon').forEach(img => {
+        img.addEventListener('click', () => {
+            let currentSrc = img.getAttribute('src');
+            let altSrc = img.getAttribute('data-alt-src');
+            img.setAttribute('src', altSrc);
+            img.setAttribute('data-alt-src', currentSrc);
+        });
+    });
+</script>
 </html>
