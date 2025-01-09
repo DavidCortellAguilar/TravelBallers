@@ -32,7 +32,7 @@ html, body {
     background-image: url('../img/Captura de pantalla 2024-10-23 171908.png');
     background-size: cover;
     background-position: center;
-    flex: 1 1 25%;
+    flex: 1 1 25%;;
 }
 
 /* Botón "ir arriba" */

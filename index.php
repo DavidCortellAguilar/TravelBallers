@@ -3,6 +3,35 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include_once('configuracion.php');
 include_once('config.php');
+
+$sql = "SELECT ID_Equipamiento, Nombre_Equipamiento, Tipo_Equipamiento, Precio_Equipamiento, Marca_Equipamiento, Descripcion_Equipamiento, Descuento_Precio, Imagen_Equipamiento FROM equipamiento";
+$result = $conn->query($sql);
+
+$tabla = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
+if ($result->num_rows > 0) {    
+    $count = 0;
+    // Generar las filas dentro del bucle
+    while ($row = $result->fetch_assoc()) {
+        if ($count == 4) break;
+        $tabla .= "
+            <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
+                <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
+                    <img src='./" . $row["Imagen_Equipamiento"] . "' alt='Imagen de " . $row["Imagen_Equipamiento"] . "' class='img-fluid img' style='max-height: 200px; object-fit: contain; border-radius:20px;'>
+                    <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
+                        <h5 class='card-title'>" . $row['Nombre_Equipamiento'] . "</h5>
+                        <p>" . $row['Tipo_Equipamiento'] . "</p>
+                        <p>" . $row['Marca_Equipamiento'] . "</p>
+                        <div style='margin-top: 0px;' class='d-flex justify-content-between align-items-center mt-3'>
+                            <a class='btn btn-primary' href='./equipamiento.php'>Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ";
+        $count++;
+    }
+}
+$tabla .= "</div></div>"; // Cerrar el contenedor y la fila
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +57,17 @@ include_once('config.php');
     <!-- CSS personalizado -->
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        .card {
+            width: 18rem;
+            height: 100%;
+        }
+        .card .img {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
@@ -83,7 +123,13 @@ include_once('config.php');
 </div>
 
     <div class="fondo3">
-        
+        <div style="margin-bottom: 15px;padding-top: 4%;">
+            <img style="text-align: center; width:70%; margin-left: 15%;" src="./img/tienda.png" alt="Tienda">
+        </div>
+        <?php echo $tabla ?>
+        <div style="text-align:center;padding-top: 4%;padding-bottom:4%">
+            <a class='btn btn-primary' href='./equipamiento.php'><b style="font-size:large">Más Productos</b></a>
+        </div>
     </div>
     <div class="fondo4">
         <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipos.png"></div>

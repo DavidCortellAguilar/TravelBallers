@@ -33,6 +33,11 @@ $nav = '
                 </li>
             </ul>
             <div class="group">';
+
+                if (isset($_SESSION['Nombre_Usuario'])) {
+                    $nav .= '<a class="menu" href="Carrito.php"><img src="./img/shopping-bag.svg"></a>';
+                }
+
                 if (isset($_SESSION['Nombre_Usuario'])) {
                     $nav .= ' <a class="menu" href="perfil.php">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="' . $stroke_color . '" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
