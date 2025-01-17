@@ -17,7 +17,7 @@ $nav = '
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul style="gap:15px" class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link ' . ($current_page == "index-copy.php" ? "active1" : "") . ' menu" href="index-copy.php"><b>Home</b></a>
+                    <a class="nav-link ' . ($current_page == "index-copy.php" ? "active1" : "") . ' menu" href="index.php"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link ' . ($current_page == "campus.php" ? "active1" : "") . ' menu" href="buscar_universidad.php"><b>Campus</b></a>
