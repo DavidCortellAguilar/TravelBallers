@@ -29,28 +29,28 @@ include_once('config.php');
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style-copy.css">
 
-</head>
+    </head>
 <body>
 <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
 <div class="fondo1">
         <?php echo $nav ?>
         <div class="container py-5">
-            <div class="card shadow-sm">
-                <h1 style="margin:5px; text-align:center">CONTÁCTANOS</h1><br>
-                <div class="card-body">
+            <div class="card" style="background-color: transparent; border: none;">
+                <h1 style="margin:5px; text-align:center; color: white;">CONTÁCTANOS</h1><br>
+                <div class="card-body" style="color: white;">
                     <form action="enviarContacta.php" method="post">
                         <div class="mb-3">
-                            <label for="producto" class="form-label"><b>Nombre</b></label>
+                            <label for="producto" class="form-label" style="color: white;"><b>Nombre</b></label>
                             <input type="text" id="Nombre" class="form-control input" placeholder="Introduce el Nombre" name="Nombre"/>
                         </div>
 
                         <div class="mb-3">
-                            <label for="producto" class="form-label"><b>Email</b></label>
+                            <label for="producto" class="form-label" style="color: white;"><b>Email</b></label>
                             <input type="Email" id="Email" class="form-control input" placeholder="Introduce el Email" name="Email"/>
                         </div>
 
                         <div class="mb-3">
-                            <label for="producto" class="form-label"><b>Mensaje</b></label>
+                            <label for="producto" class="form-label" style="color: white;"><b>Mensaje</b></label>
                             <input type="text" id="Mensaje" class="form-control input" placeholder="Introduce el Mensaje" name="Mensaje"/>
                         </div>
 

@@ -112,7 +112,7 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
             <?php echo $tabla ?>
             <br>
             <div class="d-grid mt-3" style="text-align: center;">
-                <button type="button" class="btn btn-danger"><a style="color:white; text-decoration:none" href="Equipos.php">Salir</a></button>
+                <a style="color:white; text-decoration:none" href="Equipos.php"><button type="button" class="btn btn-danger">Salir</button></a>
             </div>
         </div>
         <?php echo $footer ?>
