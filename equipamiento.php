@@ -2,22 +2,52 @@
 include_once('configuracion.php');
 include_once('config.php');
 
-$sql = "SELECT ID_Equipamiento, Nombre_Equipamiento, Tipo_Equipamiento, Precio_Equipamiento, Marca_Equipamiento, Descripcion_Equipamiento, Descuento_Precio, Imagen_Equipamiento FROM equipamiento";
-$result = $conn->query($sql);
+if (isset($_SESSION['ID_Usuario'])) {
+    $ID_Usuario = $_SESSION['ID_Usuario'];
+} else {
+    $ID_Usuario = null; // O cualquier valor predeterminado
+}
+
+$sql = "SELECT 
+            e.ID_Equipamiento,
+            e.Nombre_Equipamiento,
+            e.Tipo_Equipamiento,
+            e.Precio_Equipamiento,
+            e.Marca_Equipamiento,
+            e.Descripcion_Equipamiento,
+            e.Descuento_Precio,
+            e.Imagen_Equipamiento,
+            COUNT(f.ID_Fav_Equipamiento) AS Favorito
+        FROM equipamiento e
+        LEFT JOIN favoritos_equipamiento f ON f.ID_Fav_Equipamiento = e.ID_Equipamiento AND f.ID_Fav_Usuario_Equipa = ?
+        GROUP BY 
+            e.ID_Equipamiento, 
+            e.Nombre_Equipamiento, 
+            e.Tipo_Equipamiento, 
+            e.Precio_Equipamiento, 
+            e.Marca_Equipamiento, 
+            e.Descripcion_Equipamiento, 
+            e.Descuento_Precio, 
+            e.Imagen_Equipamiento";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $ID_Usuario);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $tabla = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
-if ($result->num_rows > 0) {    
-    // Generar las filas dentro del bucle
+if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $color = $row['Descuento_Precio'] > 0 ? 'red' : 'black';
+        $corazonSrc = $row['Favorito'] > 0 ? './img/Corazon-lleno.svg' : './img/Corazon-vacio.svg';
         $precioOriginal = $row['Precio_Equipamiento'];
         $precioDescuento = $precioOriginal - ($precioOriginal * ($row['Descuento_Precio'] / 100));
-        $precioMostrar = $row['Descuento_Precio'] > 0 ? "<span style='text-decoration: line-through; color: black;'>{$precioOriginal}€</span> <span style='color: red;'>{$precioDescuento}€</span>" : "{$precioOriginal}€";
+        $precioMostrar = $row['Descuento_Precio'] > 0
+            ? "<span style='text-decoration: line-through; color: black;'>{$precioOriginal}€</span> <span style='color: red;'>{$precioDescuento}€</span>"
+            : "{$precioOriginal}€";
 
         $tabla .= "
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
                 <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
-                    <img src='./" . $row["Imagen_Equipamiento"] . "' alt='Imagen de " . $row["Imagen_Equipamiento"] . "' class='img-fluid img' style='max-height: 200px; object-fit: contain; border-radius:20px;'>
+                    <img src='./" . $row["Imagen_Equipamiento"] . "' alt='Imagen de " . $row["Nombre_Equipamiento"] . "' class='img-fluid img' style='max-height: 200px; object-fit: contain; border-radius:20px;'>
                     <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
                         <h5 class='card-title'>" . $row['Nombre_Equipamiento'] . "</h5>
                         <p>" . $row['Tipo_Equipamiento'] . "</p>
@@ -31,7 +61,7 @@ if ($result->num_rows > 0) {
                                 <path d='M9 11v-5a3 3 0 0 1 6 0v5'></path>
                                 </svg>
                             </button>
-                            <img class='corazon' src='./img/Corazon-vacio.svg' data-alt-src='./img/Corazon-lleno.svg' alt=''>
+                            <img class='corazon' src='$corazonSrc' data-id-equipamiento='" . $row['ID_Equipamiento'] . "' alt=''>
                         </div>
                     </div>
                 </div>
@@ -40,9 +70,7 @@ if ($result->num_rows > 0) {
     }
 }
 $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
-
 ?>
-
 
 
 <!DOCTYPE html>
@@ -50,7 +78,7 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipos</title>
+    <title>Equipamiento</title>
 
     <!-- Enlaces a Bootstrap y jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -96,14 +124,31 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
         <?php echo $footer ?>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     document.querySelectorAll('.corazon').forEach(img => {
         img.addEventListener('click', () => {
-            let currentSrc = img.getAttribute('src');
-            let altSrc = img.getAttribute('data-alt-src');
-            img.setAttribute('src', altSrc);
-            img.setAttribute('data-alt-src', currentSrc);
+            const ID_Equipamiento = img.getAttribute('data-id-equipamiento');
+            const isLiked = img.getAttribute('src') === './img/Corazon-lleno.svg';
+            const newSrc = isLiked ? './img/Corazon-vacio.svg' : './img/Corazon-lleno.svg';
+
+            // Actualizar la imagen inmediatamente
+            img.setAttribute('src', newSrc);
+
+            // Enviar la solicitud AJAX
+            $.ajax({
+                url: 'favoritos_equipamiento.php',
+                type: 'POST',
+                data: { ID_Equipamiento: ID_Equipamiento, isLiked: !isLiked },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
         });
     });
 </script>
+
 </html>

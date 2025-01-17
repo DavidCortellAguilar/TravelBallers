@@ -2,10 +2,11 @@
 include_once('configuracion.php');
 include_once('config.php');
 
-if (!isset($_SESSION['ID_Usuario'])) {
-    die("Usuario no autenticado");
+if (isset($_SESSION['ID_Usuario'])) {
+    $ID_Usuario = $_SESSION['ID_Usuario'];
+} else {
+    $ID_Usuario = null; // O cualquier valor predeterminado
 }
-$ID_Usuario = $_SESSION['ID_Usuario']; // Asegúrate de que el ID del usuario esté en la sesión
 
 $sql = "SELECT 
             e.ID_Equipo, 
@@ -100,6 +101,7 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
         <?php echo $footer ?>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     document.querySelectorAll('.corazon').forEach(img => {
         img.addEventListener('click', () => {
