@@ -2,15 +2,32 @@
 include_once('configuracion.php');
 include_once('config.php');
 
-$sql = "SELECT e.ID_Equipo, e.Nombre_Equipo AS Nombre, e.Logo_Equipo AS Logo, e.Ciudad_Equipo AS Ciudad, 
-        (SELECT COUNT(*) FROM jugadores j WHERE j.ID_Equipo = e.ID_Equipo) AS Cantidad_Jugadores 
-        FROM equipos e";
-$result = $conn->query($sql);
+if (!isset($_SESSION['ID_Usuario'])) {
+    die("Usuario no autenticado");
+}
+$ID_Usuario = $_SESSION['ID_Usuario']; // Asegúrate de que el ID del usuario esté en la sesión
+
+$sql = "SELECT 
+            e.ID_Equipo, 
+            e.Nombre_Equipo AS Nombre, 
+            e.Logo_Equipo AS Logo, 
+            e.Ciudad_Equipo AS Ciudad, 
+            COUNT(j.ID_Jugador) AS Cantidad_Jugadores,
+            COUNT(f.ID_Fav_Equipo) AS Favorito
+        FROM equipos e
+        LEFT JOIN jugadores j ON j.ID_Equipo = e.ID_Equipo
+        LEFT JOIN favoritos_equipos f ON f.ID_Fav_Equipo = e.ID_Equipo AND f.ID_Fav_Usuario = ?
+        GROUP BY e.ID_Equipo, e.Nombre_Equipo, e.Logo_Equipo, e.Ciudad_Equipo";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $ID_Usuario);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $tabla = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
 if ($result->num_rows > 0) {    
     // Generar las filas dentro del bucle
     while ($row = $result->fetch_assoc()) {
+        $corazonSrc = $row['Favorito'] > 0 ? './img/Corazon-lleno.svg' : './img/Corazon-vacio.svg';
         $tabla .= "
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
                 <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
@@ -28,7 +45,7 @@ if ($result->num_rows > 0) {
                                     <path d='M11 12h1v4h1'/>
                                 </svg>
                             </a>
-                            <img class='corazon' src='./img/Corazon-vacio.svg' data-alt-src='./img/Corazon-lleno.svg' alt=''>
+                            <img class='corazon' src='$corazonSrc' data-id-equipo='" . $row['ID_Equipo'] . "' alt=''>
                         </div>
                     </div>
                 </div>
@@ -37,7 +54,6 @@ if ($result->num_rows > 0) {
     }
 }
 $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
-
 ?>
 
 
@@ -87,10 +103,25 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
 <script>
     document.querySelectorAll('.corazon').forEach(img => {
         img.addEventListener('click', () => {
-            let currentSrc = img.getAttribute('src');
-            let altSrc = img.getAttribute('data-alt-src');
-            img.setAttribute('src', altSrc);
-            img.setAttribute('data-alt-src', currentSrc);
+            const ID_Equipo = img.getAttribute('data-id-equipo');
+            const isLiked = img.getAttribute('src') === './img/Corazon-lleno.svg';
+            const newSrc = isLiked ? './img/Corazon-vacio.svg' : './img/Corazon-lleno.svg';
+
+            // Actualizar la imagen inmediatamente
+            img.setAttribute('src', newSrc);
+
+            // Enviar la solicitud AJAX
+            $.ajax({
+                url: 'favoritos_equipos.php',
+                type: 'POST',
+                data: { ID_Equipo: ID_Equipo, isLiked: !isLiked },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
         });
     });
 </script>

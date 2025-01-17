@@ -102,12 +102,12 @@ include_once('config.php');
                         </div>
 
                         <div class="d-grid" style="margin: bottom 0px;">
-                            <button type="submit" class="btn btn-primary w-25">Registrarme</button>
+                            <button type="submit" class="btn btn-primary" style="width:30%">Registrarme</button>
                         </div>
                     </form>
                     <hr style="border:1px solid black; margin: 30px">
                     <h3>¿Ya tienes cuenta?</h3>
-                    <button type="button" class="btn btn-success w-25"><a style="text-decoration:none; color:white" href="login.php">Iniciar Sesion</a></button>
+                    <a style="text-decoration:none; color:white" href="login.php"><button type="button" style="width:30%" class="btn btn-success">Iniciar Sesion</button></a>
                 </div>
         </div>
         <?php echo $footer ?>

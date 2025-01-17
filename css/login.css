@@ -48,82 +48,87 @@
 
 /* Footer */
 .footer {
-    background-color: #333;
+    background-color: #000000;
     color: #fff;
-    padding: 40px 0 20px;
+    padding: 20px 0; /* Espaciado uniforme */
     text-align: center;
 }
 
 .footer-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between; /* Elementos alineados a izquierda, centro y derecha */
     align-items: center;
-    gap: 20px;
     max-width: 1000px;
     margin: auto;
+    flex-wrap: wrap; /* Para pantallas pequeñas */
 }
 
-/* Logo del footer */
+/* Logo y copyright */
+.footer-logo {
+    text-align: center;
+    flex: 1; /* Ocupa el centro */
+}
 .footer-logo-image {
-    max-width: 150px;
-    margin-bottom: 10px;
+    max-width: 120px; /* Tamaño reducido */
+    margin-bottom: 5px;
+}
+.footer-logo p {
+    font-size: 12px;
+    color: #ccc;
+    margin: 5px 0 0; /* Espaciado ajustado */
 }
 
 /* Navegación en el footer */
+.footer-nav {
+    flex: 1; /* Ocupa la izquierda */
+    display: flex;
+    justify-content: flex-start; /* Alineación a la izquierda */
+}
 .footer-nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 15px; /* Espaciado entre enlaces */
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar relleno */
 }
-
 .footer-nav a {
     color: #fff;
     text-decoration: none;
+    font-size: 14px; /* Texto más pequeño */
     transition: color 0.3s;
 }
-
 .footer-nav a:hover {
     color: red;
 }
 
 /* Redes sociales */
 .footer-social {
+    flex: 1; /* Ocupa la derecha */
     display: flex;
-    gap: 15px;
+    justify-content: flex-end; /* Alineación a la derecha */
+    gap: 10px; /* Espaciado entre íconos */
 }
-
 .social-icon {
     color: #fff;
-    font-size: 18px;
+    font-size: 16px; /* Tamaño reducido */
     transition: color 0.3s;
 }
-
 .social-icon:hover {
     color: red;
-}
-
-/* Pie de página inferior */
-.footer-bottom {
-    border-top: 2px solid #444;
-    padding-top: 20px;
-    margin-top: 20px;
-}
-
-.footer-bottom p {
-    font-size: 14px;
-    color: #ccc;
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
     .footer-container {
-        flex-direction: column;
+        flex-direction: column; /* Elementos apilados en pantallas pequeñas */
         text-align: center;
     }
-    .footer-nav ul {
-        flex-direction: column;
+    .footer-nav {
+        justify-content: center; /* Centrar enlaces en pantallas pequeñas */
+        margin-bottom: 10px; /* Separación con otros elementos */
+    }
+    .footer-social {
+        justify-content: center; /* Centrar íconos en pantallas pequeñas */
     }
 }
 
