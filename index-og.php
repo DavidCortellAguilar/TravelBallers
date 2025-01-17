@@ -56,7 +56,7 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- CSS personalizado -->
     <script src="./js/scroll.js"></script>
-    <link rel="stylesheet" href="./css/style-copy.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <style>
         .card {
@@ -105,8 +105,8 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
                 </div>
             </div>
         </div>
-    
-    
+    </div>
+    <div class="fondo2">
         <div class="container col-xxl-8 px-4 py-5">
             <div style="margin-top: 7%;" class="row">
                 <div style="margin-bottom: 15px;">
@@ -123,7 +123,9 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
                 </p>
             </div>
         </div>
+    </div>
 
+    <div class="fondo3">
         <div style="margin-bottom: 15px;padding-top: 4%;">
             <img style="text-align: center; width:70%; margin-left: 15%;" src="./img/tienda.png" alt="Tienda">
         </div>
@@ -131,53 +133,52 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
         <div style="text-align:center;padding-top: 4%;padding-bottom:4%">
             <a class='btn btn-primary' href='./equipamiento.php'><b style="font-size:large">Más Productos</b></a>
         </div>
+    </div>
+    <div class="fondo4">
+        <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipos.png"></div>
+        <div style="width: 90%; color:black; margin-left: 5%;"><hr></div>
+        <div class="slider">
+            <div class="slide-track">
+                <!-- Primera copia de las imágenes -->
+                <div class="slide"><img src="./img/1.png" alt=""></div>
+                <div class="slide"><img src="./img/2.png" alt=""></div>
+                <div class="slide"><img src="./img/3.png" alt=""></div>
+                <div class="slide"><img src="./img/4.png" alt=""></div>
+                <div class="slide"><img src="./img/5.png" alt=""></div>
+                <div class="slide"><img src="./img/6.png" alt=""></div>
+                <div class="slide"><img src="./img/7.png" alt=""></div>
 
-        <div class="fondo4">
-            <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipos.png"></div>
-            <div style="width: 90%; color:black; margin-left: 5%;"><hr></div>
-            <div class="slider">
-                <div class="slide-track">
-                    <!-- Primera copia de las imágenes -->
-                    <div class="slide"><img src="./img/1.png" alt=""></div>
-                    <div class="slide"><img src="./img/2.png" alt=""></div>
-                    <div class="slide"><img src="./img/3.png" alt=""></div>
-                    <div class="slide"><img src="./img/4.png" alt=""></div>
-                    <div class="slide"><img src="./img/5.png" alt=""></div>
-                    <div class="slide"><img src="./img/6.png" alt=""></div>
-                    <div class="slide"><img src="./img/7.png" alt=""></div>
+                <!-- Segunda copia de las imágenes -->
+                <div class="slide"><img src="./img/1.png" alt=""></div>
+                <div class="slide"><img src="./img/2.png" alt=""></div>
+                <div class="slide"><img src="./img/3.png" alt=""></div>
+                <div class="slide"><img src="./img/4.png" alt=""></div>
+                <div class="slide"><img src="./img/5.png" alt=""></div>
+                <div class="slide"><img src="./img/6.png" alt=""></div>
+                <div class="slide"><img src="./img/7.png" alt=""></div>
 
-                    <!-- Segunda copia de las imágenes -->
-                    <div class="slide"><img src="./img/1.png" alt=""></div>
-                    <div class="slide"><img src="./img/2.png" alt=""></div>
-                    <div class="slide"><img src="./img/3.png" alt=""></div>
-                    <div class="slide"><img src="./img/4.png" alt=""></div>
-                    <div class="slide"><img src="./img/5.png" alt=""></div>
-                    <div class="slide"><img src="./img/6.png" alt=""></div>
-                    <div class="slide"><img src="./img/7.png" alt=""></div>
+                <!-- Tercera copia de las imágenes -->
+                <div class="slide"><img src="./img/1.png" alt=""></div>
+                <div class="slide"><img src="./img/2.png" alt=""></div>
+                <div class="slide"><img src="./img/3.png" alt=""></div>
+                <div class="slide"><img src="./img/4.png" alt=""></div>
+                <div class="slide"><img src="./img/5.png" alt=""></div>
+                <div class="slide"><img src="./img/6.png" alt=""></div>
+                <div class="slide"><img src="./img/7.png" alt=""></div>
 
-                    <!-- Tercera copia de las imágenes -->
-                    <div class="slide"><img src="./img/1.png" alt=""></div>
-                    <div class="slide"><img src="./img/2.png" alt=""></div>
-                    <div class="slide"><img src="./img/3.png" alt=""></div>
-                    <div class="slide"><img src="./img/4.png" alt=""></div>
-                    <div class="slide"><img src="./img/5.png" alt=""></div>
-                    <div class="slide"><img src="./img/6.png" alt=""></div>
-                    <div class="slide"><img src="./img/7.png" alt=""></div>
-
-                    <!-- Cuarta copia de las imágenes -->
-                    <div class="slide"><img src="./img/1.png" alt=""></div>
-                    <div class="slide"><img src="./img/2.png" alt=""></div>
-                    <div class="slide"><img src="./img/3.png" alt=""></div>
-                    <div class="slide"><img src="./img/4.png" alt=""></div>
-                    <div class="slide"><img src="./img/5.png" alt=""></div>
-                    <div class="slide"><img src="./img/6.png" alt=""></div>
-                    <div class="slide"><img src="./img/7.png" alt=""></div>
-                </div>
+                <!-- Cuarta copia de las imágenes -->
+                <div class="slide"><img src="./img/1.png" alt=""></div>
+                <div class="slide"><img src="./img/2.png" alt=""></div>
+                <div class="slide"><img src="./img/3.png" alt=""></div>
+                <div class="slide"><img src="./img/4.png" alt=""></div>
+                <div class="slide"><img src="./img/5.png" alt=""></div>
+                <div class="slide"><img src="./img/6.png" alt=""></div>
+                <div class="slide"><img src="./img/7.png" alt=""></div>
             </div>
-
-            <div style="width: 90%; color:black; margin-left: 5%; margin-bottom: 3rem;"><hr></div>
-            <?php echo $footer?>
         </div>
+
+        <div style="width: 90%; color:black; margin-left: 5%; margin-bottom: 3rem;"><hr></div>
+        <?php echo $footer?>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
