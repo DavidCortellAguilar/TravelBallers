@@ -75,9 +75,21 @@ $nav = '
 $footer = '
 <footer class="footer">
     <div class="footer-container">
+        <!-- Enlaces de navegación a la izquierda -->
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="#">Aviso Legal</a></li>
+                <li><a href="#">Política de Cookies</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo y texto de copyright en el centro -->
         <div class="footer-logo">
             <img src="./img/logo.png" alt="TRAVEL BALLERS" class="footer-logo-image">
+            <p>&copy; 2024 Travel Ballers. Todos los derechos reservados.</p>
         </div>
+
+        <!-- Redes sociales a la derecha -->
         <div class="footer-social">
             <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -85,14 +97,6 @@ $footer = '
             <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
         </div>
     </div>
-    <div class="footer-bottom">
-        <nav class="footer-nav">
-            <ul>
-                <li><a href="#">Aviso Legal</a></li>
-                <li><a href="#">Política de Cookies</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2024 Travel Ballers. Todos los derechos reservados.</p>
-    </div>
-</footer>';
+</footer>
+';
 ?>
