@@ -259,7 +259,7 @@ html, body {
     transition: color 0.3s;
 }
 .footer-nav a:hover {
-    color: red;
+    color: #55e7f8;
 }
 
 /* Redes sociales */
@@ -275,7 +275,7 @@ html, body {
     transition: color 0.3s;
 }
 .social-icon:hover {
-    color: red;
+    color: #55e7f8;
 }
 
 /* Responsividad */

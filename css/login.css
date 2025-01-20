@@ -28,14 +28,14 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: red;
+    background-color: #55e7f8;
     left: 0;
     bottom: -5px;
     color:white
 }
 
 .active1 {
-    color: red;
+    color: #55e7f8;
 }
 
 .group {
@@ -98,7 +98,7 @@
     transition: color 0.3s;
 }
 .footer-nav a:hover {
-    color: red;
+    color: #55e7f8;
 }
 
 /* Redes sociales */
@@ -114,7 +114,7 @@
     transition: color 0.3s;
 }
 .social-icon:hover {
-    color: red;
+    color: #55e7f8;
 }
 
 /* Responsividad */
@@ -135,6 +135,6 @@
 
 /* Cambia el color del trazo (stroke) */
 .color-red {
-    stroke: red; /* Cambia el color del borde */
-    fill: red; /* Asegura que el relleno sea transparente, si quieres solo cambiar el borde */
+    stroke: #55e7f8; /* Cambia el color del borde */
+    fill: #55e7f8; /* Asegura que el relleno sea transparente, si quieres solo cambiar el borde */
 }
