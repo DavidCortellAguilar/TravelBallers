@@ -101,8 +101,8 @@ include_once('config.php');
                             <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña" name="Pass"/>
                         </div>
 
-                        <div class="d-grid" style="margin: bottom 0px;">
-                            <button type="submit" class="btn btn-primary" style="width:30%">Registrarme</button>
+                        <div style="margin: bottom 0px;">
+                            <button type="submit" class="btn btn-primary registrar">Registrarme</button>
                         </div>
                     </form>
                     <hr style="border:1px solid black; margin: 30px">

@@ -102,7 +102,7 @@ include_once('config.php');
                     </form>
                     <hr style="border:1px solid black; margin: 30px">
                     <h3>¿No tienes cuenta?</h3>
-                    <a style="text-decoration:none; color:white" href="registrar.php"><button type="button" class="btn btn-success" style="width:30%">Registrarme</button></a>
+                    <a style="text-decoration:none; color:white" href="registrar.php"><button type="button" class="btn btn-success registrar">Registrarme</button></a>
                 </div>
         </div>
         <?php echo $footer ?>
