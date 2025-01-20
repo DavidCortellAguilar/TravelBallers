@@ -139,7 +139,7 @@ $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
             $.ajax({
                 url: 'favoritos_equipamiento.php',
                 type: 'POST',
-                data: { ID_Equipamiento: ID_Equipamiento, isLiked: !isLiked },
+                data: { ID_Equipamiento: ID_Equipamiento },
                 success: function(response) {
                     console.log(response);
                 },

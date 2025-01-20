@@ -72,14 +72,14 @@ html, body {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: red;
+    background-color: #55e7f8;
     left: 0;
     bottom: -5px;
     color:white
 }
 
 .active1 {
-    color: red;
+    color: #55e7f8;
 }
 
 .group {

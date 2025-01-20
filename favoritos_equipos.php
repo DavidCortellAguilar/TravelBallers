@@ -8,16 +8,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $ID_Usuario = $_SESSION['ID_Usuario'];
     $ID_Equipo = $_POST['ID_Equipo'];
-    $isLiked = $_POST['isLiked'];
 
-    if ($isLiked) {
-        // Agregar a favoritos
-        $sql = "INSERT INTO favoritos_equipos (ID_Fav_Usuario, ID_Fav_Equipo) VALUES (?, ?)";
+    // Verificar si el registro ya existe
+    $sql = "SELECT * FROM favoritos_equipos WHERE ID_Fav_Usuario = ? AND ID_Fav_Equipo = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $ID_Usuario, $ID_Equipo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // Eliminar de favoritos
+        $sql = "DELETE FROM favoritos_equipos WHERE ID_Fav_Usuario = ? AND ID_Fav_Equipo = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ii", $ID_Usuario, $ID_Equipo);
     } else {
-        // Eliminar de favoritos
-        $sql = "DELETE FROM favoritos_equipos WHERE ID_Fav_Usuario = ? AND ID_Fav_Equipo = ?";
+        // Agregar a favoritos
+        $sql = "INSERT INTO favoritos_equipos (ID_Fav_Usuario, ID_Fav_Equipo) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ii", $ID_Usuario, $ID_Equipo);
     }

@@ -3,7 +3,7 @@ include_once('config.php');
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
-$stroke_color = ($current_page == "login.php" || $current_page == "registrar.php") ? "red" : "currentColor";
+$stroke_color = ($current_page == "login.php" || $current_page == "registrar.php") ? "#55e7f8" : "currentColor";
 
 $nav = '
 <nav class="navbar navbar-expand-lg" id="Home" aria-label="Eleventh navbar example">
@@ -35,11 +35,11 @@ $nav = '
             <div class="group">';
 
                 if (isset($_SESSION['Nombre_Usuario'])) {
-                    $nav .= '<a class="menu" href="Carrito.php"><img src="./img/shopping-bag.svg"></a>';
+                    $nav .= '<a class="' . ($current_page == "Carrito.php" ? "active1" : "") . 'menu" href="Carrito.php"><img src="./img/shopping-bag.svg"></a>';
                 }
 
                 if (isset($_SESSION['Nombre_Usuario'])) {
-                    $nav .= ' <a class="menu" href="perfil.php">
+                    $nav .= ' <a class="' . ($current_page == "perfil.php" ? "active1" : "") . 'menu" href="perfil.php">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="' . $stroke_color . '" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2"> 
                         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path> 
                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path> 
