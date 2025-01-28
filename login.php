@@ -78,6 +78,7 @@ include_once('config.php');
 </head>
 
 <body>
+    <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
         <?php echo $nav ?>
         <div class="contenedor sombra p-4 rounded bg-light">
             <h1 class="text-center">

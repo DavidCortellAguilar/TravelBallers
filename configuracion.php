@@ -3,7 +3,7 @@ include_once('config.php');
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
-$stroke_color = ($current_page == "login.php" || $current_page == "registrar.php") ? "#55e7f8" : "currentColor";
+$stroke_color = ($current_page == "login.php" || $current_page == "registrar.php" || $current_page == "perfil.php") ? "#55e7f8" : "white";
 
 $nav = '
 <nav class="navbar navbar-expand-lg" id="Home" aria-label="Eleventh navbar example">

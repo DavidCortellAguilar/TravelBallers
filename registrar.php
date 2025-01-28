@@ -78,6 +78,7 @@ include_once('config.php');
 </head>
 
 <body>
+    <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
         <?php echo $nav ?>
         <div class="contenedor sombra p-4 rounded bg-light">
             <h1 class="text-center">
@@ -93,12 +94,17 @@ include_once('config.php');
                         
                         <div class="mb-3">
                             <label class="form-label"><b>Email</b></label>
-                            <input type="Email" name="Email" id="Email" class="form-control input" placeholder="Introduce el email" name="Email"/>
+                            <input type="Email" name="Email" id="Email" class="form-control input" placeholder="Introduce el email"/>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label"><b>Contraseña</b></label>
-                            <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña" name="Pass"/>
+                            <input type="text" name="Pass" id="Pass" class="form-control input" placeholder="Introduce la contraseña"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><b>Fecha de Nacimiento</b></label>
+                            <input type="date" name="Fecha" id="Fecha" class="form-control input" placeholder="Introduce la fecha"/>
                         </div>
 
                         <div style="margin: bottom 0px;">
