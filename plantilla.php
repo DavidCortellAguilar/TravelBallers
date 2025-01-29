@@ -75,7 +75,6 @@ $imgBanner = isset($equipoBanners[$ID_Equipo])
     <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <style>
-
         table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse:collapse;

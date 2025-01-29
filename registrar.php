@@ -28,7 +28,6 @@ include_once('config.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- CSS personalizado -->
-    <script src="./js/scroll.js"></script>
     <link rel="stylesheet" href="./css/login.css">
     
     <style>
@@ -78,7 +77,6 @@ include_once('config.php');
 </head>
 
 <body>
-    <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
         <?php echo $nav ?>
         <div class="contenedor sombra p-4 rounded bg-light">
             <h1 class="text-center">
@@ -86,7 +84,7 @@ include_once('config.php');
             </h1>
             <h1>REGISTRARME</h1><br>
                 <div class="card-body">
-                    <form action="enviarRegistro.php" method="post">
+                    <form action="enviarRegistro.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label class="form-label"><b>Nombre</b></label>
                             <input type="text" name="Nombre" id="Nombre" class="form-control input" placeholder="Introduce tu nombre"/>
@@ -107,7 +105,12 @@ include_once('config.php');
                             <input type="date" name="Fecha" id="Fecha" class="form-control input" placeholder="Introduce la fecha"/>
                         </div>
 
-                        <div style="margin: bottom 0px;">
+                        <div class="mb-3">
+                            <label class="form-label"><b>Foto de Perfil</b></label><br>
+                            <input name="archivo" id="archivo" type="file"/>
+                        </div>
+
+                        <div style="margin: bottom 0px; margin-top: 2rem">
                             <button type="submit" class="btn btn-primary registrar">Registrarme</button>
                         </div>
                     </form>

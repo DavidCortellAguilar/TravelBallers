@@ -7,16 +7,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Email = $_POST['Email'];
     $Pass = $_POST['Pass'];
     $Fecha = $_POST['Fecha'];
-    $ID_Rol = 2; // Asegúrate de que el tipo de dato sea correcto
+    $ID_Rol = 2;
+    $archivo = $_FILES['archivo']['name'];
+
+        if (isset($archivo) && $archivo != "") {
+            //Obtenemos algunos datos necesarios sobre el archivo
+            $tipo = $_FILES['archivo']['type'];
+            $tamano = $_FILES['archivo']['size'];
+            $temp = $_FILES['archivo']['tmp_name'];
+            //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+            if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+                echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+                - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+            }else {
+                if (move_uploaded_file($temp, './img/img_usuarios/'.$archivo)) {
+                    chmod('./img/img_usuarios/'.$archivo, 0777);
+                    $tiempo = time();
+                    $imagenGuardarBBDD = './img/img_usuarios/'.$archivo;
+                }
+            }
+        }
 
     // Preparar consulta SQL
-    $sql = "INSERT INTO usuarios (Nombre_Usuario, Email, Contraseña, Fecha_Nacimiento, ID_Rol)
-            VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO usuarios (Nombre_Usuario, Email, Contraseña, Fecha_Nacimiento, ID_Rol, Imagen_Usuario)
+            VALUES (?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ssssi", $Nombre, $Email, $Pass, $Fecha, $ID_Rol);
+        $stmt->bind_param("ssssis", $Nombre, $Email, $Pass, $Fecha, $ID_Rol, $imagenGuardarBBDD);
 
         // Ejecutar Consulta
         if ($stmt->execute()) {
