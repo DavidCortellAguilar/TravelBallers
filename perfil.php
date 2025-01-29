@@ -10,6 +10,19 @@ if (isset($_SESSION['ID_Usuario'])) {
     $ID_Usuario = null; // O cualquier valor predeterminado
 }
 
+    $sql2="SELECT * FROM usuarios WHERE ID_Usuario='$ID_Usuario'";
+
+    $result2 = $conn->query($sql2);
+
+    if($result2->num_rows > 0) {
+        $row2 = $result2->fetch_assoc();
+
+        $Nombre = $row2["Nombre_Usuario"];
+        $Email = $row2["Email"];
+        $Fecha = $row2["Fecha_Nacimiento"];
+        $Imagen = "<img src='" . $row2["Imagen_Usuario"] . "' alt='Imagen de " . $row2["Nombre_Usuario"] . "' class='img-fluid' style='max-height: 400px; object-fit: contain; border-radius: 20px;'>";
+    }
+
 // Consulta SQL para obtener los equipos favoritos del usuario
 $sql = "SELECT 
             e.ID_Equipo, 
@@ -127,6 +140,19 @@ $equipamientoFavorito .= "</div></div>"; // Cerrar el contenedor y la fila
     <span class="ir-arriba"><img style="width: 60px" src="./img/arriba.png"></span>
     <div class="fondo1">
         <?php echo $nav ?>
+
+        <!-- CONTENIDO PÁGINA -->
+        <div class="profile-container">
+            <div id="g1" class="grid-imagenes">
+                <?php echo $Imagen ?>
+            </div>
+            <div class="profile-details">
+                <h2><?php echo $Nombre ?></h2>
+                <p><?php echo $Email ?></p>
+                <p><?php echo $Fecha ?></p>
+            </div>
+        </div>
+
         <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipos_favoritos.png"></div>
         <?php echo $equiposFavoritos ?>
         <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipamiento_favorito.png"></div>

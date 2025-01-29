@@ -10,23 +10,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ID_Rol = 2;
     $archivo = $_FILES['archivo']['name'];
 
-        if (isset($archivo) && $archivo != "") {
-            //Obtenemos algunos datos necesarios sobre el archivo
-            $tipo = $_FILES['archivo']['type'];
-            $tamano = $_FILES['archivo']['size'];
-            $temp = $_FILES['archivo']['tmp_name'];
-            //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-            if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-                echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-                - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
-            }else {
-                if (move_uploaded_file($temp, './img/img_usuarios/'.$archivo)) {
-                    chmod('./img/img_usuarios/'.$archivo, 0777);
-                    $tiempo = time();
-                    $imagenGuardarBBDD = './img/img_usuarios/'.$archivo;
-                }
+    if (isset($archivo) && $archivo != "") {
+        //Obtenemos algunos datos necesarios sobre el archivo
+        $tipo = $_FILES['archivo']['type'];
+        $tamano = $_FILES['archivo']['size'];
+        $temp = $_FILES['archivo']['tmp_name'];
+    
+        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+        if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+            echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+            - Se permiten archivos .gif, .jpg, .png. y de 2MB como máximo.</b></div>';
+            $imagenGuardarBBDD = './img/img_usuarios/default.webp'; // Imagen por defecto
+        } else {
+            if (move_uploaded_file($temp, './img/img_usuarios/'.$archivo)) {
+                chmod('./img/img_usuarios/'.$archivo, 0777);
+                $imagenGuardarBBDD = './img/img_usuarios/'.$archivo;
+            } else {
+                echo '<div><b>Error al subir la imagen.</b></div>';
+                $imagenGuardarBBDD = './img/img_usuarios/default.webp'; // Imagen por defecto si falla la subida
             }
         }
+    } else {
+        // Si no se sube ninguna imagen, usar la imagen por defecto
+        $imagenGuardarBBDD = './img/img_usuarios/default.webp';
+    }
+    
 
     // Preparar consulta SQL
     $sql = "INSERT INTO usuarios (Nombre_Usuario, Email, Contraseña, Fecha_Nacimiento, ID_Rol, Imagen_Usuario)
