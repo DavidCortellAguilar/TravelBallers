@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tipo = $_FILES['archivo']['type'];
         $tamano = $_FILES['archivo']['size'];
         $temp = $_FILES['archivo']['tmp_name'];
-    
+
         //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
         if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
             echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Si no se sube ninguna imagen, usar la imagen por defecto
         $imagenGuardarBBDD = './img/img_usuarios/default.webp';
     }
-    
+
 
     // Preparar consulta SQL
     $sql = "INSERT INTO usuarios (Nombre_Usuario, Email, Contraseña, Fecha_Nacimiento, ID_Rol, Imagen_Usuario)

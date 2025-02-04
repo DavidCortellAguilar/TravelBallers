@@ -92,7 +92,7 @@ if ($resultEquipamiento->num_rows > 0) {
 
         $equipamientoFavorito .= "
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
-                <div class='card shadow-sm' style='border-radius: 20px; min-width: 100%; min-height: 100%;'>
+                <div class='card shadow-sm responsive-equipamiento' style='border-radius: 20px; height: 400px;'>
                     <img src='./" . $row["Imagen"] . "' alt='Imagen de " . $row["Nombre"] . "' class='img-fluid img' style='max-height: 200px; object-fit: contain; border-radius:20px;'>
                     <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
                         <h5 class='card-title'>" . $row['Nombre'] . "</h5>
