@@ -81,7 +81,7 @@ $stmtEquipamiento->bind_param("i", $ID_Usuario);
 $stmtEquipamiento->execute();
 $resultEquipamiento = $stmtEquipamiento->get_result();
 
-$equipamientoFavorito = "<div class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
+$equipamientoFavorito = "<div style='margin-bottom:5%;' class='container mt-4'><div class='row justify-content-center'>"; // Inicio del contenedor y fila
 if ($resultEquipamiento->num_rows > 0) {
     while ($row = $resultEquipamiento->fetch_assoc()) {
         $precioOriginal = $row['Precio'];
@@ -153,9 +153,9 @@ $equipamientoFavorito .= "</div></div>"; // Cerrar el contenedor y la fila
             </div>
         </div>
 
-        <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipos_favoritos.png"></div>
+        <div style="text-align:center;padding-top:10px; margin-bottom: 5%"><img style="width:60%" src="./img/equipos_favoritos.png"></div>
         <?php echo $equiposFavoritos ?>
-        <div style="text-align:center;padding-top:10px"><img style="width:60%" src="./img/equipamiento_favorito.png"></div>
+        <div style="text-align:center;padding-top:10px; margin-bottom: 5%; margin-top: 5%"><img style="width:60%" src="./img/equipamiento_favorito.png"></div>
         <?php echo $equipamientoFavorito ?>
         <?php echo $footer ?>
     </div>
