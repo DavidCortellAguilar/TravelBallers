@@ -35,7 +35,7 @@ $nav = '
             <div class="group">';
 
                 if (isset($_SESSION['Nombre_Usuario'])) {
-                    $nav .= '<a class="' . ($current_page == "Carrito.php" ? "active1" : "") . 'menu" href="Carrito.php"><img src="./img/shopping-bag.svg"></a>';
+                    $nav .= '<a class="' . ($current_page == "carrito.php" ? "active1" : "") . 'menu" href="Carrito.php"><img src="./img/shopping-bag.svg"></a>';
                 }
 
                 if (isset($_SESSION['Nombre_Usuario'])) {
