@@ -69,7 +69,7 @@ include 'configuracion.php';
                         <p>Subtotal: <span class="float-right" id="subtotal"><?= number_format(array_sum(array_map(fn($p) => $p['precio'] * $p['cantidad'], $_SESSION['carrito'] ?? [])), 2); ?>€</span></p>
                         <hr>
                         <p class="font-weight-bold">Total: <span class="float-right" id="total"><?= number_format(array_sum(array_map(fn($p) => $p['precio'] * $p['cantidad'], $_SESSION['carrito'] ?? [])), 2); ?>€</span></p>
-                        <button class="btn btn-primary">Finalizar compra</button>
+                        <a href="./checkout_carrito.php"><button style="width: 100%;" class="btn btn-primary">Finalizar compra</button></a>
                         <p class="text-center mt-2"><i class="fas fa-lock"></i> Pago seguro</p>
                     </div>
                 </div>

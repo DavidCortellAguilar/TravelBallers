@@ -37,7 +37,10 @@ if ($result->num_rows > 0) {
                         <h5 class='card-title'>" . $row['Nombre'] . "</h5>
                         <p class='card-text'>Nº Jugadores: <span class='price'>" . $row['Cantidad_Jugadores'] . "</span></p>
                         <p style='margin-bottom: 0px;' class='card-text'>📍Ciudad: " . $row['Ciudad'] . "</p>
-                        <div style='margin-top: 0px;' class='d-flex justify-content-between align-items-center mt-3'>
+                        <div style='margin-top: 0px; gap: 15%;' class='d-flex align-items-center mt-3'>";
+        
+        if (isset($_SESSION['Nombre_Usuario'])) {
+            $tabla .= "
                             <a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "' class='equipo d-flex justify-content-center align-items-center mt-3'>
                                 <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
                                     <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
@@ -46,12 +49,27 @@ if ($result->num_rows > 0) {
                                     <path d='M11 12h1v4h1'/>
                                 </svg>
                             </a>
-                            <img class='corazon' src='$corazonSrc' data-id-equipo='" . $row['ID_Equipo'] . "' alt=''>
+                            <img class='corazon' src='$corazonSrc' data-id-equipo='" . $row['ID_Equipo'] . "' alt=''>";
+        } else {
+            $tabla .= "
+                            <a href='plantilla.php?ID_Equipo=" . $row['ID_Equipo'] . "' class='equipo d-flex justify-content-center align-items-center mt-3'>
+                                <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-info-circle' width='52' height='52' viewBox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+                                    <path stroke='none' d='M0 0h24v24H0z' fill='none'/>
+                                    <path d='M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0' />
+                                    <path d='M12 9h.01'/>
+                                    <path d='M11 12h1v4h1'/>
+                                </svg>
+                            </a>
+                            <a href='login.php'>
+                                <img class='corazon' src='$corazonSrc' alt=''>
+                            </a>";
+        }
+        
+        $tabla .= "
                         </div>
                     </div>
                 </div>
-            </div>
-        ";
+            </div>";
     }
 }
 $tabla .= "</div></div>"; // Cerrar el contenedor y la fila

@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
             ? "<span style='text-decoration: line-through; color: black;'>{$precioOriginal}€</span> <span style='color: red;'>{$precioDescuento}€</span>"
             : "{$precioOriginal}€";
 
-        $tabla .= "
+            $tabla .= "
             <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center align-items-stretch'>
                 <div class='card shadow-sm' style='border-radius: 20px; max-width: 100%;'>
                     <img src='./" . $row["Imagen_Equipamiento"] . "' alt='Imagen de " . $row["Nombre_Equipamiento"] . "' class='img-fluid img' style='max-height: 200px; object-fit: contain; border-radius:20px;'>
@@ -53,20 +53,37 @@ if ($result->num_rows > 0) {
                         <p>" . $row['Tipo_Equipamiento'] . "</p>
                         <p>" . $row['Marca_Equipamiento'] . "</p>
                         <p style='margin-bottom: 0px;'>" . $row['Descripcion_Equipamiento'] . "</p>
-                        <div style='margin-top: 0px;' class='d-flex justify-content-between align-items-center mt-3'>
-                            <p style='font-size:20px; margin-top:15px; margin-left:10%;font-weight: bold;'>" . $precioMostrar . "</p>
+                        <div style='margin-top: 0px; gap: 15%;' class='d-flex align-items-center mt-3'>
+                            <p style='font-size:20px; margin-top:15px; margin-left:10%;font-weight: bold;'>" . $precioMostrar . "</p>";
+        
+        if (isset($_SESSION['Nombre_Usuario'])) {
+            $tabla .= "
                             <a href='add_carrito.php?id={$row['ID_Equipamiento']}'>
                                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='green' stroke-linecap='round' stroke-linejoin='round' width='32' height='32' stroke-width='2'>
-                                <path d='M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z'></path>
-                                <path d='M9 11v-5a3 3 0 0 1 6 0v5'></path>
+                                    <path d='M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z'></path>
+                                    <path d='M9 11v-5a3 3 0 0 1 6 0v5'></path>
                                 </svg>
                             </a>
-                            <img class='corazon' src='$corazonSrc' data-id-equipamiento='" . $row['ID_Equipamiento'] . "' alt=''>
+                            <img class='corazon' src='$corazonSrc' data-id-equipamiento='" . $row['ID_Equipamiento'] . "' alt=''>";
+        } else {
+            $tabla .= "
+                            <a href='login.php'>
+                                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='red' stroke-linecap='round' stroke-linejoin='round' width='32' height='32' stroke-width='2'>
+                                    <path d='M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z'></path>
+                                    <path d='M9 11v-5a3 3 0 0 1 6 0v5'></path>
+                                </svg>
+                            </a>
+                            <a href='login.php'>
+                                <img class='corazon' src='$corazonSrc' alt=''>
+                            </a>";
+        }
+        
+        $tabla .= "
                         </div>
                     </div>
                 </div>
-            </div>
-        ";
+            </div>";
+        
     }
 }
 $tabla .= "</div></div>"; // Cerrar el contenedor y la fila
