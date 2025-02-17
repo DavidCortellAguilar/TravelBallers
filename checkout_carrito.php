@@ -42,7 +42,7 @@ $total = array_sum(array_map(fn($p) => $p['precio'] * $p['cantidad'], $_SESSION[
                     $_SESSION['carrito'] = [];
                 ?>
             </div>
-        <?php echo $footer; ?>
     </div>
+    <?php echo $footer; ?>
 </body>
 </html>
