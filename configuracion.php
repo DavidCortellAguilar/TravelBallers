@@ -86,7 +86,7 @@ $footer = '
         <!-- Logo y texto de copyright en el centro -->
         <div class="footer-logo">
             <img src="./img/logo.png" alt="TRAVEL BALLERS" class="footer-logo-image">
-            <p>&copy; 2024 Travel Ballers. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Travel Ballers. Todos los derechos reservados.</p>
         </div>
 
         <!-- Redes sociales a la derecha -->
