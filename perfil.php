@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
                     <img src='./" . $row["Logo"] . "' alt='Imagen de " . $row["Nombre"] . "' class='img-fluid' style='max-height: 200px; object-fit: contain;'>
                     <div class='card-body' style='background-color:rgb(227, 227, 227); border-radius: 0 0 20px 20px;'>
                         <h5 class='card-title'>" . $row['Nombre'] . "</h5>
-                        <p class='card-text'>Nº Jugadores: <span class='price'>" . $row['Cantidad_Jugadores'] . "</span></p>
+                        <p class='card-text'>Nº Jugadores: <span class='jugadores'>" . $row['Cantidad_Jugadores'] . "</span></p>
                         <p style='margin-bottom: 0px;' class='card-text'>📍Ciudad: " . $row['Ciudad'] . "</p>
                     </div>
                 </div>
